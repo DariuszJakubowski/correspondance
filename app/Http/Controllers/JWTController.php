@@ -27,18 +27,11 @@ class JWTController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(RegisterRequest $request)
+    public function register(RegisterRequest $request, User $user)
     {
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-
         return response()->json([
             'message' => 'User successfully registered',
-            'user' => $user
+            'user' => $user->addNew($request)
         ], 201);
     }
 
@@ -47,21 +40,11 @@ class JWTController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required|string|min:6',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
-        if (!$token = auth()->attempt($validator->validated())) {
+        if (!$token = auth()->attempt($request->all())) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
         return $this->respondWithToken($token);
     }
 
@@ -73,7 +56,6 @@ class JWTController extends Controller
     public function logout()
     {
         auth()->logout();
-
         return response()->json(['message' => 'User successfully logged out.']);
     }
 

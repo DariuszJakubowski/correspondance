@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
@@ -20,6 +22,7 @@ class User extends Authenticatable implements JWTSubject
     //     */
 
     protected $fillable = [
+        'name',
         'first_name',
         'last_name',
         'email',
@@ -63,5 +66,15 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function addNew(RegisterRequest $request)
+    {
+        return $this->create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
     }
 }
