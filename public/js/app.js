@@ -3220,7 +3220,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -3291,7 +3290,7 @@ new vue__WEBPACK_IMPORTED_MODULE_3__["default"]({
   render: function render(h) {
     return h(_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   }
-});
+}); // https://softgear.net/softopedia/course/laravel-vue/tutorial/template-setting-and-vue-router
 
 /***/ }),
 

@@ -6,9 +6,8 @@
             <Sidebar />
 
             <div id="content-wrapper">
-                <router-view>
 
-                </router-view>
+                <router-view />
 
                 <Footer />
             </div>
