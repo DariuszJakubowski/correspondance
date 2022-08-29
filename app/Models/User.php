@@ -2,28 +2,26 @@
 
 namespace App\Models;
 
-use App\Http\Requests\RegisterRequest;
-use Illuminate\Support\Facades\Hash;
-use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
-         * The attributes that are mass assignable.
-         *
-         * @var array<int, string>
-         */
-
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'first_name',
         'last_name',
+        'name',
         'email',
         'password',
     ];
@@ -67,13 +65,10 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function addNew(RegisterRequest $request)
+
+    public function departments()
     {
-        return $this->create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        return $this->belongsToMany(Department::class);
     }
+
 }

@@ -34,11 +34,16 @@
 
 import Vue from 'vue';
 import App from './App.vue';
-import 'bootstrap/dist/css/bootstrap.css'; // added new after above
-import 'bootstrap'; //added new after above
+import router from './router'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap';
+
+Vue.config.productionTip = false
 
 new Vue({
-    el: '#app',  // id #app from our welcome.blade.php where it will render
-    render: h => h(App)
+    el: '#app',
+    router,
+    template: '<App/>',
+    components: { App }
+
 });
-// https://softgear.net/softopedia/course/laravel-vue/tutorial/template-setting-and-vue-router

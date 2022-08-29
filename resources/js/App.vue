@@ -1,14 +1,12 @@
 <template>
-    <div>
+    <div id="app" class="sb-nav-fixed">
         <Header />
 
         <div id="wrapper">
             <Sidebar />
 
             <div id="content-wrapper">
-
-                <router-view />
-
+                <router-view> </router-view>
                 <Footer />
             </div>
         </div>
@@ -28,7 +26,7 @@ export default {
         Footer
     },
     created() {
-        // document.querySelector("body").style.backgroundColor = "#00f";
+       // document.querySelector("body").style.backgroundColor = "#00f";
     }
 };
 </script>

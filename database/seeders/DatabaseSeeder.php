@@ -2,6 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
+use App\Models\Item;
+use App\Models\Jrwa_category;
+use App\Models\Thread;
+use App\Models\Jrwa_category_version;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +19,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+         Thread::factory(3)->create();
+         Department::factory(1)->create();
+         User::factory(5)->create();
+         Item::factory(10)->create();
     }
 }
