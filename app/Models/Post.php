@@ -13,7 +13,11 @@ class Post extends Model
     use HasFactory,
         SoftDeletes;
 
-    protected $fillable = ['title', 'description', 'priority', 'type', 'created_by', 'current_recipient', 'recipient' ];
+    protected $fillable = ['title', 'description', 'priority', 'incoming', 'created_by', 'current_recipient', 'recipient' ];
+
+    protected $casts = [
+        'incoming' => 'boolean', // poczta przychodząca lub wychodząca
+    ];
 
     public static function boot()
     {
@@ -22,6 +26,12 @@ class Post extends Model
             $model->created_by = Auth::user()->id ?? 1;
         });
     }
+
+
+    /**
+     *  Relationships
+     */
+
 
     public function thread()
     {
@@ -48,5 +58,9 @@ class Post extends Model
     {
         return $this->hasMany( File::class);
     }
+
+    // end Relationships --------------------------------
+
+
 
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Items from '../views/Items'
+import Posts from '../views/Posts'
 
 Vue.use(VueRouter)
 
@@ -8,9 +8,9 @@ export default new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/items',
-            name: 'items',
-            component: Items,
+            path: '/posts',
+            name: 'posts',
+            component: Posts,
         },
         // {
         //     path: '/categories',
@@ -18,9 +18,9 @@ export default new VueRouter({
         //     component: Categories
         // },
         // {
-        //     path: '/items',
-        //     name: 'items',
-        //     component: Items
+        //     path: '/posts',
+        //     name: 'posts',
+        //     component: posts
         // },
         // {
         //     path: '/login',
