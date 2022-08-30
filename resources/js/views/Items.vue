@@ -9,8 +9,8 @@
 
         <div class="card mb-3">
             <div class="card-header d-flex">
-                <i class="fas fa-chart-area"></i>
-                Kategorie
+                <i class="fas fa-envelope"></i>
+
             </div>
             <div class="card-body">
                 <table class="table">

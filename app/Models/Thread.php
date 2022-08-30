@@ -11,8 +11,8 @@ class Thread extends Model
 
     protected $fillable = ['title', 'comment'];
 
-    public function items()
+    public function posts()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Post::class);
     }
 }

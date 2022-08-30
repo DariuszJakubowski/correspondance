@@ -9,9 +9,12 @@ class File extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'description', 'url'];
+
+
     // m2m
-    public function items()
+    public function posts()
     {
-        return $this->belongsToMany(Item::class, 'items_has_files');
+        return $this->belongsToMany(Post::class, 'posts_has_files');
     }
 }

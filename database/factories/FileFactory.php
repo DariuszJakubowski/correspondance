@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Item;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -16,12 +16,12 @@ class FileFactory extends Factory
     public function definition()
     {
         return [
-            'item_id' => function () {
-                return Item::all()->random();
+            'post_id' => function () {
+                return Post::all()->random();
             },
             'name' => $this->faker->word,
             'description' => '',
-            'url' => storage_path() . '\\items\\' .  Str::random(10) . '.jpg'
+            'url' => storage_path() . '\\posts\\' .  Str::random(10) . '.jpg'
         ];
     }
 }

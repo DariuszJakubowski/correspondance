@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
-class Item extends Model
+class Post extends Model
 {
     use HasFactory,
         SoftDeletes;
 
-    protected $fillable = ['title', 'description', 'type', 'created_by'];
+    protected $fillable = ['title', 'description', 'priority', 'type', 'created_by', 'current_recipient', 'recipient' ];
 
     public static function boot()
     {
@@ -41,7 +41,7 @@ class Item extends Model
     // m2m
     public function recipients()
     {
-        return $this->belongsToMany(User::class, 'items_has_recipients');
+        return $this->belongsToMany(User::class, 'posts_has_recipients');
     }
 
     public function files()

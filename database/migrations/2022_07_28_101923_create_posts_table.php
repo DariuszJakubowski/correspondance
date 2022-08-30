@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');
             $table->smallInteger('priority')->comment('1|2|3 istotne przy czestotliwosci powieadomien');
-            $table->string('type')->comment('email|letter');
-            $table->unsignedInteger('thread_id');
+            $table->boolean('incoming')->comment('1 - przychodząca; 0 - wychodząca');
+            $table->string('format', 10)->comment('email | letter');
+            $table->unsignedInteger('thread_id')->comment('Id wątku');
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('current_recipient')->comment('Tymczasowy/bieżący odbiorca');
             $table->unsignedInteger('recipient')->comment('Docelowy właściciel, czyli ktoś kto zatwierdzi odbiór');
@@ -51,7 +52,7 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('posts');
         Schema::enableForeignKeyConstraints();
     }
 }

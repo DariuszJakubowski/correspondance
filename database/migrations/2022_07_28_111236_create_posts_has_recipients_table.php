@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsHasRecipientsTable extends Migration
+class CreatePostsHasRecipientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateItemsHasRecipientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items_has_recipients', function (Blueprint $table) {
+        Schema::create('posts_has_recipients', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('post_id');
             $table->unsignedInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('item_id')
+            $table->foreign('post_id')
                 ->references('id')
-                ->on('items')
+                ->on('posts')
                 ->onDelete('cascade');
 
             $table->foreign('user_id')
@@ -38,6 +38,6 @@ class CreateItemsHasRecipientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items_has_recipients');
+        Schema::dropIfExists('posts_has_recipients');
     }
 }

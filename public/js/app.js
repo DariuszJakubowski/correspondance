@@ -9600,8 +9600,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card mb-3" }, [
       _c("div", { staticClass: "card-header d-flex" }, [
-        _c("i", { staticClass: "fas fa-chart-area" }),
-        _vm._v("\n            Kategorie\n        "),
+        _c("i", { staticClass: "fas fa-envelope" }),
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [

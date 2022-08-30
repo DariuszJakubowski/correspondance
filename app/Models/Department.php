@@ -9,11 +9,7 @@ class Department extends Model
 {
     use HasFactory;
 
-    public function subdepartments()
-    {
-        return $this->hasMany(Subdepartment::class);
-    }
-
+    protected $fillable = ['name'];
     // m2m
     public function users()
     {
