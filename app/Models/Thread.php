@@ -10,4 +10,9 @@ class Thread extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'comment'];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

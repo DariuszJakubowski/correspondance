@@ -17,7 +17,7 @@ class CreateThreadsTable extends Migration
         Schema::create('threads', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 200);
-            $table->string('comment', 255);
+            $table->string('comment', 255)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

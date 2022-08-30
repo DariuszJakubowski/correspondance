@@ -23,4 +23,30 @@ class Item extends Model
         });
     }
 
+    public function thread()
+    {
+        return $this->belongsTo(Thread::class);
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function currentRecipient()
+    {
+        return $this->belongsTo(User::class, 'current_recipient');
+    }
+
+    // m2m
+    public function recipients()
+    {
+        return $this->belongsToMany(User::class, 'items_has_recipients');
+    }
+
+    public function files()
+    {
+        return $this->hasMany( File::class);
+    }
+
 }

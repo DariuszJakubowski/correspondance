@@ -8,6 +8,10 @@ class CreateJrwaCategoryVersionsTable extends Migration
 {
     /**
      * Run the migrations.
+     * JRWA ma statusy
+     * old - były nieaktywny;
+     * current - czyli obowiązujący
+     * draft - czyli roboczy przyszły
      *
      * @return void
      */
@@ -16,6 +20,7 @@ class CreateJrwaCategoryVersionsTable extends Migration
         Schema::create('jrwa_category_versions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('status', 20)->comment('old | current | draft');
+            $table->string('comment', 100)->nullable();
             $table->timestamps();
         });
     }

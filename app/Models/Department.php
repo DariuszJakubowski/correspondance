@@ -13,4 +13,10 @@ class Department extends Model
     {
         return $this->hasMany(Subdepartment::class);
     }
+
+    // m2m
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'departments_has_users');
+    }
 }

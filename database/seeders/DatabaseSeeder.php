@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Department;
+use App\Models\File;
 use App\Models\Item;
 use App\Models\Jrwa_category;
 use App\Models\Thread;
@@ -23,5 +24,6 @@ class DatabaseSeeder extends Seeder
          Department::factory(1)->create();
          User::factory(5)->create();
          Item::factory(10)->create();
+         File::factory(10)->create();
     }
 }
