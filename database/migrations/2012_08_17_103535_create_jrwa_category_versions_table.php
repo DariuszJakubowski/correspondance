@@ -22,6 +22,7 @@ class CreateJrwaCategoryVersionsTable extends Migration
             $table->string('status', 20)->comment('old | current | draft');
             $table->string('comment', 100)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

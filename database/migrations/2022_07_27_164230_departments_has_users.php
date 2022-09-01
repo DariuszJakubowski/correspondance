@@ -17,16 +17,15 @@ class DepartmentsHasUsers extends Migration
             $table->increments('id');
             $table->unsignedInteger('department_id');
             $table->unsignedInteger('user_id');
+            $table->softDeletes();
 
             $table->foreign('department_id')
                 ->references('id')
-                ->on('departments')
-                ->onDelete('cascade');
+                ->on('departments');
 
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+                ->on('users');
         });
     }
 

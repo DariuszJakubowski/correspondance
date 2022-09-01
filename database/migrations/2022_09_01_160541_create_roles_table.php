@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJrwaCategoriesTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateJrwaCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('jrwa_categories', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('jrwa_category_version_id');
+            $table->string('name', 100)->unique();
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('jrwa_category_version_id')
-                ->references('id')
-                ->on('jrwa_category_versions');
         });
-
     }
 
     /**
@@ -33,6 +28,6 @@ class CreateJrwaCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jrwa_categories');
+        Schema::dropIfExists('roles');
     }
 }

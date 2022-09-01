@@ -21,6 +21,7 @@ class CreateFilesTable extends Migration
             $table->string('url', 500);
             $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('post_id')
                 ->references('id')
