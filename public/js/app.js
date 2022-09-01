@@ -9535,7 +9535,7 @@ var render = function () {
                       "router-link",
                       {
                         staticClass: "nav-link",
-                        attrs: { to: "/items", exact: "" },
+                        attrs: { to: "/posts", exact: "" },
                       },
                       [
                         _c("i", { staticClass: "fas fa-fw fa-chart-area" }),

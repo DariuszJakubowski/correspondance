@@ -15,13 +15,14 @@ class CreateDepartmentsTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name', 100);
+            $table->string('shortname', 10);
             $table->timestamps();
             $table->softDeletes();
 
         });
         // table comment
-        DB::statement("ALTER TABLE `departments` comment 'Działy ZNiO'");
+        DB::statement("ALTER TABLE `departments` comment 'Działy ZNiO - Symbole działów i organów'");
     }
 
     /**

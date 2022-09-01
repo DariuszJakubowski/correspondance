@@ -12,7 +12,7 @@
                                 </router-link>
                             </li>
                             <li class="nav-item">
-                                <router-link to="/items" class="nav-link" exact>
+                                <router-link to="/posts" class="nav-link" exact>
                                     <i class="fas fa-fw fa-chart-area"></i>
                                     <span>Korespondencja</span>
                                 </router-link>

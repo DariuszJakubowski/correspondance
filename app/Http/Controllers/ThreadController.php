@@ -10,8 +10,8 @@ class ThreadController extends Controller
 {
     public function index()
     {
-//        return Thread::with('items')->get();
-        return Post::with(['thread', 'createdBy', 'currentRecipient', 'recipients', 'files'])->first();
+        return Thread::with('items')->get();
+//        return Post::with(['thread', 'createdBy', 'currentRecipient', 'recipients', 'files'])->first();
     }
 
     public function store(Request $request)
