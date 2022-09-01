@@ -28,10 +28,7 @@ class Post extends Model
     }
 
 
-    /**
-     *  Relationships
-     */
-
+    /**  Relationships */
 
     public function thread()
     {
