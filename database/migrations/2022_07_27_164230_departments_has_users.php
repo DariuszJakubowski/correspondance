@@ -17,6 +17,7 @@ class DepartmentsHasUsers extends Migration
             $table->increments('id');
             $table->unsignedInteger('department_id');
             $table->unsignedInteger('user_id');
+            $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('department_id')

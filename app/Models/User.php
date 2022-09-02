@@ -70,7 +70,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function departments()
     {
-        return $this->belongsToMany(Department::class);
+        return $this->belongsToMany(Department::class, 'departments_has_users');
     }
 
     public function roles()

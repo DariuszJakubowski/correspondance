@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
          $users = User::all();
         foreach ($users as $user) {
             $user->roles()->attach($roles->random());
+            $user->departments()->attach(1);
          }
 
     }
