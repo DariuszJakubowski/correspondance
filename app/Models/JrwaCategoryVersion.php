@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Jrwa_category_version extends Model
+class JrwaCategoryVersion extends Model
 {
     use HasFactory, SoftDeletes;
 }

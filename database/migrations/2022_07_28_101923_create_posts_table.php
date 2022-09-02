@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->smallInteger('priority')->comment('1|2|3 istotne przy czestotliwosci powieadomien');
             $table->boolean('incoming')->comment('1 - przychodząca; 0 - wychodząca');
             $table->string('format', 10)->comment('email | letter');
-            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('jrwa_category_id');
             $table->unsignedInteger('thread_id')->comment('Id wątku');
             $table->unsignedInteger('created_by');
             $table->unsignedInteger('current_recipient')->comment('Tymczasowy/bieżący odbiorca');

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\JrwaCategory;
 use App\Models\Thread;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,6 +22,9 @@ class PostFactory extends Factory
             'priority' => $this->faker->numberBetween(1, 3),
             'incoming' => $this->faker->randomElement([1, 0]),
             'format' => $this->faker->randomElement(['email', 'letter']),
+            'jrwa_category_id' => function () {
+                return  JrwaCategory::all()->random();
+            },
             'thread_id' => function () {
                 return Thread::all()->random();
             },

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DepartmentFactory extends Factory
+class JrwaCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,8 @@ class DepartmentFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'DTI',
-            'shortname' => 'DTI'
+            'class_number' => $this->faker->randomElement(['0100', '0110', '0120']),
+            'jrwa_category_version_id' => 1
         ];
     }
 }

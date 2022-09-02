@@ -16,6 +16,7 @@ class CreateJrwaCategoriesTable extends Migration
         Schema::create('jrwa_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('jrwa_category_version_id');
+            $table->string('class_number',4);
             $table->timestamps();
             $table->softDeletes();
 

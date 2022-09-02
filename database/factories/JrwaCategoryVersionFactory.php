@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DepartmentFactory extends Factory
+class JrwaCategoryVersionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,7 @@ class DepartmentFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'DTI',
-            'shortname' => 'DTI'
+
         ];
     }
 }
