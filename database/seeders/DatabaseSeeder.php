@@ -11,6 +11,7 @@ use App\Models\Thread;
 use App\Models\JrwaCategoryVersion;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,6 +34,13 @@ class DatabaseSeeder extends Seeder
          JrwaCategory::factory(2)->create();
          Thread::factory(3)->create();
          Department::factory(1)->create();
+         User::create([
+             'first_name' => 'admin',
+             'last_name' => 'admin',
+             'email' => 'admin@admin.com',
+             'password' => Hash::make('admin123'),
+             'email_verified_at' => now(),
+         ]);
          User::factory(5)->create();
          Post::factory(10)->create();
          File::factory(10)->create();

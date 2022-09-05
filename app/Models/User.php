@@ -37,6 +37,7 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
+
     /**
      * The attributes that should be cast.
      *
@@ -78,4 +79,13 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany(Role::class, 'users_has_roles');
     }
 
+    public function addNew($request)
+    {
+        return $this->create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+    }
 }
