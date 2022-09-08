@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Department;
 use App\Models\File;
+use App\Models\Permission;
 use App\Models\Post;
 use App\Models\JrwaCategory;
 use App\Models\Role;
@@ -23,13 +24,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          Role::insert([
-             ['name' => 'user'],
-             ['name' => 'admin'],
-             ['name' => 'dev'],
+             ['name' => 'user', 'guard_name' => 'web'],
+             ['name' => 'admin', 'guard_name' => 'web'],
+             ['name' => 'dev', 'guard_name' => 'web'],
          ]);
 
          JrwaCategoryVersion::create(['status' => 'current']);
-
 
          JrwaCategory::factory(2)->create();
          Thread::factory(3)->create();
@@ -44,13 +44,18 @@ class DatabaseSeeder extends Seeder
          User::factory(5)->create();
          Post::factory(10)->create();
          File::factory(10)->create();
+         $departments = Department::all();
 
-         $roles = Role::all();
-         $users = User::all();
-        foreach ($users as $user) {
-            $user->roles()->attach($roles->random());
-            $user->departments()->attach(1);
-         }
+         //permissions
+        foreach ($departments as $department)
+        {
+            Permission::insert([
+                ['department_id' => $department->id, 'name' => "read-{$department->id}", 'guard_name' => 'api' ],
+                ['department_id' => $department->id, 'name' => "create-{$department->id}", 'guard_name' => 'api' ],
+                ['department_id' => $department->id, 'name' => "update-{$department->id}", 'guard_name' => 'api' ],
+                ['department_id' => $department->id, 'name' => "delete-{$department->id}", 'guard_name' => 'api' ],
+            ]);
+        }
 
     }
 }

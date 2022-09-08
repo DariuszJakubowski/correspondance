@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Models\Role as SpatieRole;
 
-class Role extends Model
+class Role extends SpatieRole
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = ['name'];
 
 
-    public function users()
-    {
-        return $this->belongsToMany( User::class, 'users_has_roles');
-    }
 }

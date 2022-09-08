@@ -10,10 +10,15 @@ class Department extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['shortname', 'name'];
     // m2m
     public function users()
     {
         return $this->belongsToMany(User::class, 'departments_has_users');
+    }
+
+    public function permissions()
+    {
+        return $this->hasMany(Permission::class);
     }
 }

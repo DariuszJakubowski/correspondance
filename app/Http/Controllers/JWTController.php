@@ -68,7 +68,7 @@ class JWTController extends Controller
      */
     public function profile()
     {
-        return response()->json(auth()->user());
+        return response()->json(auth()->user()->with('roles')->first());
     }
 
     /**
