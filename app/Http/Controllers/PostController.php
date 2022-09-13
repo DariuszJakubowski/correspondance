@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Role;
 use App\Models\Thread;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ThreadController extends Controller
+class PostController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-//        return Thread::with('items')->get();
-        return Post::with(['thread', 'createdBy', 'currentRecipient', 'recipients', 'files'])->first();
-//        return response()->json(['data' => Role::with('users')->get(), 'user' => auth()->user()]);
+        return Post::with(['thread'])->get();
     }
 
     /**
@@ -27,19 +28,25 @@ class ThreadController extends Controller
     {
         return response()->json([
             'status' => true,
+            'threads' => Thread::all(),
             'auth' => auth()->user()
         ]);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $thread = Thread::create($request->all());
+        $post = Post::create($request->all());
         return response()->json([
             'status' => true,
-            'thread' => $thread
+            'post' => $post
         ]);
     }
-
 
     /**
      * Display the specified resource.
@@ -47,9 +54,9 @@ class ThreadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show(Post $post)
     {
-        return $thread->with('posts')->first();
+        return $post->with('thread')->first();
     }
 
     /**
@@ -58,11 +65,11 @@ class ThreadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    public function edit(Post $post)
     {
         return response()->json([
             'status' => true,
-            'thread' => $thread
+            'post' => $post
         ]);
     }
 
@@ -70,29 +77,27 @@ class ThreadController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Thread $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thread $thread)
+    public function update(Request $request, Post $post)
     {
         return response()->json([
             'status' => true,
-            'thread' => $thread->update($request->all())
+            'post' => $post->update($request->all())
         ]);
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Thread $thread
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy($id)
     {
         return response()->json([
-            'status' => Thread::destroy($thread)
+            'message' => Post::destroy($id) == 1 ? 'Post deleted' : ''
         ]);
     }
 }
-
